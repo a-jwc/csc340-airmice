@@ -8,5 +8,7 @@ git clone https://github.com/alexjwchau-sfsu/csc340-airmice.git
 
 # when you want to push the changes to the git repository
 git add [space separated file names]
+
 git commit -m "[commit message]"
+
 git push origin dev
