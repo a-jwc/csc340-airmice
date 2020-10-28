@@ -7,11 +7,15 @@ using namespace std;
 
 class City {
     public:
-        string GetName();
+        City();
+        string getName();
+        int getDate(int);
         
     private:
+        // city name
         string name;
-        map<int, int> dateAQI;
+        // map holding date and aqi
+        map<int, double> dateAQI;
 };
 
 #endif

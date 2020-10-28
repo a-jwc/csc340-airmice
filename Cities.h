@@ -6,10 +6,11 @@
 
 using namespace std;
 
-class City {
+class Cities {
     public:
         
     private:
+        // holds list of cities
         vector<City> cityList;
 };
 
