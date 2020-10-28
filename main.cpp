@@ -14,8 +14,7 @@ int main() {
     ifstream in;
 
     // string variable for testing
-    string date;
-    int i = 0;
+    int date = 0;
 
     // print opening file
     cout << "opening file" << endl;
@@ -31,7 +30,7 @@ int main() {
 
     // testing getName and getDate functions
     cout << c.getName() << endl;
-    cout << c.getDate(i) << endl;
+    cout << c.getDate(date) << endl;
 
     return 0;
 }

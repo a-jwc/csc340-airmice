@@ -9,6 +9,7 @@ class City {
     public:
         City();
         string getName();
+        string setName();
         int getDate(int);
         
     private:
