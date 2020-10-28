@@ -10,11 +10,11 @@ City::City() {
 }
 
 // get name of city
-string City::getName() {
+string City::getName() const {
     return name;
 }
 
 // get date by passing in an int parameter
-int City::getDate(int i) {
-    return dateAQI[i];
+int City::getAQI(int date) const {
+    return dateAQI.at(date);
 }

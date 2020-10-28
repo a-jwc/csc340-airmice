@@ -14,7 +14,9 @@ int main() {
 
     // testing getName and getDate functions
     cout << c.getName() << endl;
-    cout << c.getDate(date) << endl;
+    cout << c.getAQI(date) << endl;
+
+    ct.testRead();
 
     return 0;
 }
