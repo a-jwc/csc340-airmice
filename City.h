@@ -7,17 +7,34 @@ using namespace std;
 
 class City {
     public:
+        // default constructor
         City();
+
+        // get name prototype
         string getName() const;
-        string setName() const;
-        int getAQI(int date) const;
+
+        // set name prototype
+        void setName(string name);
+
+        void setCityDateAQI(string&, int&);
+
+        // get the AQI by passing in the date
+        int getAQIFromDate(string date) const;
+
+        int getMapSize();
+
+        void printInfo();
+
+        void lookUpByName(string);
+
+        // get the average AQI between a particular date range
         double getAverage(int dateFrom, int dateTo);
         
     private:
         // city name
         string name;
-        // map holding date and aqi
-        map<int, int> dateAQI;
+        // map holding date and aqi respectively
+        map<string, int> dateAQI;
 };
 
 #endif

@@ -7,16 +7,19 @@ using namespace std;
 int main() {
     // testing class instantiation
     Cities ct;
-    City c;  
 
-    // string variable for testing
-    int date = 0;
+    // variable for testing
+    string testCity = "Oakland";
 
     // testing getName and getDate functions
-    cout << c.getName() << endl;
-    cout << c.getAQI(date) << endl;
+    // cout << c.getName() << endl;
+    // cout << c.getAQI(date) << endl;
 
-    ct.testRead();
+    ct.fileRead();
+    ct.addData();
+    //ct.printList();
+    ct.lookUpCity(testCity);
+    // ct.printCityMapSize();
 
     return 0;
 }
