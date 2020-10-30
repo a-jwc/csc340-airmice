@@ -28,13 +28,16 @@ class City {
         void lookUpByName(string);
 
         // get the average AQI between a particular date range
-        double getAverage(int dateFrom, int dateTo);
+        double getAverage(string dateFrom, string dateTo);
         
     private:
         // city name
         string name;
         // map holding date and aqi respectively
         map<string, int> dateAQI;
+    
+        //extra function for getAverage
+        void changeIntoString(const int&, const int&, string&);
 };
 
 #endif
