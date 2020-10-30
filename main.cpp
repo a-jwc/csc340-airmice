@@ -9,7 +9,7 @@ int main() {
     Cities ct;
 
     // variable for testing
-    string testCity = "Oakland";
+    string testCity = "Thousand Oaks";
 
     // testing getName and getDate functions
     // cout << c.getName() << endl;

@@ -25,6 +25,7 @@ void Cities::addData() {
     City tempCity;
     int count = 2;
     tempCity = setInitialCityName(names.at(0));
+    //tempCity.setCityDateAQI(dates.at(0),aqi.at(0));
     setDateAQI(dates.at(0), aqi.at(0), tempCity);
     cout << "City 1: " << tempCity.getName() << endl;
 
@@ -32,6 +33,7 @@ void Cities::addData() {
         if(names.at(i) == tempCity.getName()) {
             setDateAQI(dates.at(i), aqi.at(i), tempCity);
         } else if (names.at(i) != tempCity.getName()) {
+            cityList.push_back(tempCity);
             tempCity = setInitialCityName(names.at(i));
             setDateAQI(dates.at(i), aqi.at(i), tempCity);
             cout << "City " << count << ": " << tempCity.getName() << endl;
@@ -46,7 +48,7 @@ void Cities::addData() {
 City Cities::setInitialCityName(string name) {
     City city;
     city.setName(name);
-    cityList.push_back(city);
+    // cityList.push_back(city);
     return city;
 }
 
