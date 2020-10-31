@@ -19,22 +19,20 @@ class Cities {
         City setInitialCityName(string name);
 
         // get city name prototype
-        string getCityName(int i) const;
+        string getCityNameByIndex(int i) const;
 
         void setDateAQI(string&, int&, City&);
 
-        void getDateAQI(City city);
-
-        void lookUpCity(string);
+        void lookUpCityAndPrint(string);
 
         int getDate() const;
 
         void printCityMapSize(City);
 
-        bool isEmpty() const;
-
         // print city names prototype
         void printList();
+
+        void printCityAndAQIByDate(string);
     private:
         // holds list of cities
         vector<City> cityList;

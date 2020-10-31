@@ -266,3 +266,14 @@ double City::getAverage(string dateFrom, string dateTo) {
     correctDate:
     return ((double) total / (double) counter);
 }//end getAverage
+
+bool City::hasDate(string date) {
+    auto it = dateAQI.find(date);
+    if(it != dateAQI.end()) {
+        return true;
+    } else
+    {
+        return false;
+    }
+    
+}

@@ -29,6 +29,8 @@ class City {
 
         // get the average AQI between a particular date range
         double getAverage(string dateFrom, string dateTo);
+
+        bool hasDate(string);
         
     private:
         // city name

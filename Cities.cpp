@@ -39,7 +39,6 @@ void Cities::addData() {
             cout << "City " << count << ": " << tempCity.getName() << endl;
             count++;
         }
-        //cout << tempCity.getName() << endl;
     }
 
 }
@@ -48,12 +47,15 @@ void Cities::addData() {
 City Cities::setInitialCityName(string name) {
     City city;
     city.setName(name);
-    // cityList.push_back(city);
     return city;
 }
 
+void Cities::setDateAQI(string &date, int &aqi, City &city) {
+    city.setCityDateAQI(date,aqi);
+}
+
 // returns the city name by going to the index i of cityList
-string Cities::getCityName(int i) const {
+string Cities::getCityNameByIndex(int i) const {
     return cityList.at(i).getName();
 }
 
@@ -63,19 +65,11 @@ void Cities::printList() {
     }
 }
 
-void Cities::setDateAQI(string &date, int &aqi, City &city) {
-    city.setCityDateAQI(date,aqi);
-}
-
-void Cities::getDateAQI(City city) {
-
-}
-
 void Cities::printCityMapSize(City city) {
     cout << city.getMapSize() << endl;
 }
 
-void Cities::lookUpCity(string name) {
+void Cities::lookUpCityAndPrint(string name) {
     for(auto i : cityList) {
         if(i.getName() == name) {
             cout << "Found city!" << endl;
@@ -83,4 +77,16 @@ void Cities::lookUpCity(string name) {
             break;
         }
     }
+}
+
+void Cities::printCityAndAQIByDate(string date) {
+    int count = 0;
+    cout << "AQIs on " << date << ": " << endl;
+    for(auto i : cityList) {
+        if(i.hasDate(date)) {
+            count++;
+            cout << "City Name: "<< i.getName() << " | AQI: " << i.getAQIFromDate(date) << endl;
+        }
+    }
+    cout << "There were " << count << " cities with this date." << endl;
 }

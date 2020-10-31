@@ -18,8 +18,9 @@ int main() {
     ct.fileRead();
     ct.addData();
     //ct.printList();
-    ct.lookUpCity(testCity);
-    // ct.printCityMapSize();
+    ct.lookUpCityAndPrint(testCity);
+    ct.printCityAndAQIByDate("10/10/2020");
+    
 
     return 0;
 }
