@@ -161,7 +161,7 @@ double City::getAverage(string dateFrom, string dateTo) {
     string checkTo = (--dateAQI.end())->first;
 
     //checking input
-    while ( (dateToDays(checkFrom) > dateToDays(dateFrom) ) || (dateToDays(checkTo) < dateToDays(dateTo)) ) {
+    while ( (dateToDays(checkFrom) > dateToDays(dateFrom) ) || (dateToDays(checkTo) < dateToDays(dateTo)) || (dateToDays(dateFrom)) > dateToDays(dateTo)) {
         cout << "ERROR: Please enter dates between(and including)" <<
              checkFrom << " and " << checkTo << endl;
         cout << "Enter date from: ";
