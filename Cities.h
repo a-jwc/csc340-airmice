@@ -21,6 +21,10 @@ class Cities {
         // get city name prototype
         string getCityNameByIndex(int i) const;
 
+        City getCity(string);
+
+        void searchCity(string, City&);
+
         void setDateAQI(string&, int&, City&);
 
         void lookUpCityAndPrint(string);
@@ -33,6 +37,8 @@ class Cities {
         void printList();
 
         void printCityAndAQIByDate(string);
+
+        void getAvgFromRange(string, string, string);
     private:
         // holds list of cities
         vector<City> cityList;

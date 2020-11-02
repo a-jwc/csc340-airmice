@@ -2,3 +2,4 @@ main
 CMakeLists.txt
 cmake-build-debug
 .idea/
+main.exe

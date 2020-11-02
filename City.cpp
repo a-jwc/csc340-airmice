@@ -1,4 +1,5 @@
-#include  <iostream>
+#include <iostream>
+#include <string>
 #include "City.h"
 
 using namespace std;
@@ -67,14 +68,14 @@ double City::getAverage(string dateFrom, string dateTo) {
     string checkTo = (--dateAQI.end())->first;
 
     //using a while statement to check if dates are valid
-    while ((checkFrom >= dateFrom) || (checkTo <= dateTo)) {
-        cout << "ERROR: Please enter dates between(and including)" <<
-             checkFrom << " and " << checkTo << endl;
-        cout << "Enter date from: ";
-        cin >> dateFrom;
-        cout << "Enter date to: \\ ";
-        cin >> dateTo;
-    }//end while statement
+    // while ((checkFrom >= dateFrom) || (checkTo <= dateTo)) {
+    //     cout << "ERROR: Please enter dates between (and including)" <<
+    //          checkFrom << " and " << checkTo << endl;
+    //     cout << "Enter date from: ";
+    //     cin >> dateFrom;
+    //     cout << "Enter date to: ";
+    //     cin >> dateTo;
+    // }//end while statement
 
     //initializing counter and total
     int counter = 0;

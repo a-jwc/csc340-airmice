@@ -18,9 +18,14 @@ int main() {
     ct.fileRead();
     ct.addData();
     //ct.printList();
-    ct.lookUpCityAndPrint(testCity);
-    ct.printCityAndAQIByDate("10/10/2020");
-    
+    // ct.lookUpCityAndPrint(testCity);
+    // ct.printCityAndAQIByDate("10/10/2020");
+    // ct.getAvgFromRange("1/1/20", "1/7/20", testCity);
+    City city = ct.getCity(testCity);
+    if(city.getName() == "")
+        cout << "Could not find city." << endl;
+    else
+        cout << "Got city: " << city.getName() << endl;
 
     return 0;
 }

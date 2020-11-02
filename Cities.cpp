@@ -27,7 +27,7 @@ void Cities::addData() {
     tempCity = setInitialCityName(names.at(0));
     //tempCity.setCityDateAQI(dates.at(0),aqi.at(0));
     setDateAQI(dates.at(0), aqi.at(0), tempCity);
-    cout << "City 1: " << tempCity.getName() << endl;
+    // cout << "City 1: " << tempCity.getName() << endl;
 
     for(int i = 1; i < dates.size(); i++) {
         if(names.at(i) == tempCity.getName()) {
@@ -36,7 +36,7 @@ void Cities::addData() {
             cityList.push_back(tempCity);
             tempCity = setInitialCityName(names.at(i));
             setDateAQI(dates.at(i), aqi.at(i), tempCity);
-            cout << "City " << count << ": " << tempCity.getName() << endl;
+            // cout << "City " << count << ": " << tempCity.getName() << endl;
             count++;
         }
     }
@@ -89,4 +89,23 @@ void Cities::printCityAndAQIByDate(string date) {
         }
     }
     cout << "There were " << count << " cities with this date." << endl;
+}
+
+void Cities::getAvgFromRange(string dateFrom, string dateTo, string cityName) {
+    City city = getCity(cityName);
+    city.getAverage(dateFrom, dateTo);
+}
+
+City Cities::getCity(string cityName) {
+    City city;
+    searchCity(cityName, city);
+    return city;
+}
+
+void Cities::searchCity(string cityName, City &city) {
+    for(auto i : cityList) {
+        if(i.getName() == cityName) {
+            city = i;
+        }
+    }
 }
