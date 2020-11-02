@@ -110,3 +110,19 @@ void Cities::searchCity(string cityName, City &city) {
         }
     }
 }
+
+int Cities::getAqi(const string& name, const string& date){
+    int AQI;
+    City foundCity;
+
+    foundCity = getCity(name);
+
+    if(foundCity.hasDate(date)){
+        cout << "The AQI for " << date << " is " << foundCity.getAQI(date);
+    }
+    else{
+        cout << "Date not Found." << endl;
+    }
+
+    return foundCity.getAQI(date);
+}//end getAqi
