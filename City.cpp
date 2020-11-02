@@ -57,6 +57,100 @@ void City::changeIntoString(const int& day, const int& month, string& tempDate){
     tempDate.insert(2, to_string(day));
 }//end changeIntoString
 
+void City::changeIntoInt(string date, int& month, int& day, int& year)
+{
+    //initializing tempMonth, tempDay and tempYear to get numbers after 9
+    string tempMonth = "", tempDay = "", tempYear = "";
+
+    tempMonth = tempMonth + date.at(0);
+    date.erase(0, 1); //erasing what has been read
+    if(date.at(0) != '/') {
+        tempMonth = tempMonth + date.at(0);
+        date.erase(0, 1);
+    }
+    date.erase(0, 1);
+
+    month = stoi(tempMonth);
+
+
+    // */*/**  */**/**
+    tempDay = tempDay + date.at(0);
+    date.erase(0, 1);
+    if(date.at(0) != '/') {
+        tempDay = tempDay + date.at(0);
+        date.erase(0, 1);
+    }
+    date.erase(0, 1);
+
+    //working on day, changing string to int using stoi
+    day = stoi(tempDay);
+
+    //working on year
+    tempYear = tempYear + date.at(0);
+    tempYear = tempYear + date.at(1);
+    //using stoi again
+    year = stoi(tempYear);
+}//end changeIntoInt
+
+int City::dateToDays(string date){
+    //day counter
+    int days = 0, dayFromDate, monthFromDate, YearFromDate;
+    changeIntoInt(date, monthFromDate, dayFromDate, YearFromDate);
+
+    switch (monthFromDate) {
+        case 1:
+            days = days + dayFromDate;
+            break;
+        case 2:
+            //number of days in January
+            days = days + 31;
+            //adding the number of days in February
+            days = days + dayFromDate;
+            break;
+        case 3:
+            days = days + 31 + 29;
+            days = days + dayFromDate;
+            break;
+        case 4:
+            days = days + 31 + 29 + 31;
+            days = days + dayFromDate;
+            break;
+        case 5:
+            days = days + 31 + 29 + 31 + 30;
+            days = days + dayFromDate;
+            break;
+        case 6:
+            days = days + 31 + 29 + 31 + 30 + 31;
+            days = days + dayFromDate;
+            break;
+        case 7:
+            days = days + 31 + 29 + 31 + 30 + 31 + 30;
+            days = days + dayFromDate;
+            break;
+        case 8:
+            days = days + 31 + 29 + 31 + 30 + 31 + 30 + 31;
+            days = days + dayFromDate;
+            break;
+        case 9:
+            days = days + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31;
+            days = days + dayFromDate;
+            break;
+        case 10:
+            days = days + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
+            days = days + dayFromDate;
+            break;
+        case 11:
+            days = days + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
+            days = days + dayFromDate;
+            break;
+        case 12:
+            days = days + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
+            days = days + dayFromDate;
+            break;
+    }//end switch
+    return days;
+}// end DatetoDays
+
 double City::getAverage(string dateFrom, string dateTo) {
     //note: map organizes dates properly
     //checking whether the dates lie in between our ranges.
@@ -66,13 +160,13 @@ double City::getAverage(string dateFrom, string dateTo) {
     //getting last date
     string checkTo = (--dateAQI.end())->first;
 
-    //using a while statement to check if dates are valid
-    while ((checkFrom >= dateFrom) || (checkTo <= dateTo)) {
+    //checking input
+    while ( (dateToDays(checkFrom) > dateToDays(dateFrom) ) || (dateToDays(checkTo) < dateToDays(dateTo)) || (dateToDays(dateFrom)) > dateToDays(dateTo)) {
         cout << "ERROR: Please enter dates between(and including)" <<
              checkFrom << " and " << checkTo << endl;
         cout << "Enter date from: ";
         cin >> dateFrom;
-        cout << "Enter date to: \\ ";
+        cout << "Enter date to: ";
         cin >> dateTo;
     }//end while statement
 
@@ -81,28 +175,13 @@ double City::getAverage(string dateFrom, string dateTo) {
     int total = 0;
     string tempDate = dateFrom;
 
-    //initializing current day
-    string monthC = "", dayC = "";
-    monthC = monthC + dateFrom.at(0);
-    dayC = dayC + dateFrom.at(2);
-    if (dateFrom.at(3) != '/') {
-        dayC = dayC + dateFrom.at(3);
-    }
-
-    //initializing date to
-    string monthTo = "", dayTo = "";
-    monthTo = monthTo + dateTo.at(0);
-    dayTo = dayTo + dateTo.at(2);
-    if (dateTo.at(3) != '/') {
-        dayTo = dayTo + dateTo.at(3);
-    }
-
 
     //Converting string to int (Date & Month)
-    int dateFromInt = stoi(dayC); //start
-    int dateToInt = stoi(dayTo);  //end
-    int monthFromInt = stoi(monthC); //start
-    int monthToInt = stoi(monthTo); //end
+    int dateFromInt, monthFromInt, yearFromInt; //start
+    int dateToInt, monthToInt, yearToInt;  //end
+
+    changeIntoInt(tempDate,monthFromInt, dateFromInt, yearFromInt); //date from
+    changeIntoInt(dateTo, monthToInt, dateToInt, yearToInt); //date to
 
     while (monthFromInt <= monthToInt) {
             switch (monthFromInt) {
@@ -116,7 +195,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99;
                             goto correctDate;
                         }//end if
                     }//end for
@@ -124,7 +202,7 @@ double City::getAverage(string dateFrom, string dateTo) {
                     monthFromInt++;
                     break;
                 case 2:
-                    for (int i = dateFromInt; i <= 28; i++) {
+                    for (int i = dateFromInt; i <= 29; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
                         //adding to the total
@@ -133,7 +211,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -150,7 +227,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -167,7 +243,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -184,7 +259,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -202,7 +276,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -219,7 +292,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -236,7 +308,6 @@ double City::getAverage(string dateFrom, string dateTo) {
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
-                            monthFromInt = 99; //For getting out the loop
                             goto correctDate;
                         }//end if
                     }//end for
@@ -252,7 +323,6 @@ double City::getAverage(string dateFrom, string dateTo) {
                         counter++;
                             //getting out of while statement if reaches to date
                             if (monthFromInt == monthToInt && i == dateToInt) {
-                                monthFromInt = 99; //For getting out the loop
                                 goto correctDate;
                             }//end if
                         }//end for
@@ -261,7 +331,6 @@ double City::getAverage(string dateFrom, string dateTo) {
                         break;
             }//end switch
             //to escape switch once reaching the correct date
-
     }//end while
     correctDate:
     return ((double) total / (double) counter);
