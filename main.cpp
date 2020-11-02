@@ -20,8 +20,10 @@ int main() {
     //ct.printList();
     // ct.lookUpCityAndPrint(testCity);
     // ct.printCityAndAQIByDate("10/10/2020");
-    // ct.getAvgFromRange("1/1/20", "1/7/20", testCity);
+    ct.getAvgFromRange("1/1/2020", "2/1/2020", testCity);
+    
     City city = ct.getCity(testCity);
+   
     if(city.getName() == "")
         cout << "Could not find city." << endl;
     else

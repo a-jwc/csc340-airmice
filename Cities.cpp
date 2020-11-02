@@ -93,7 +93,8 @@ void Cities::printCityAndAQIByDate(string date) {
 
 void Cities::getAvgFromRange(string dateFrom, string dateTo, string cityName) {
     City city = getCity(cityName);
-    city.getAverage(dateFrom, dateTo);
+    cout << "Average AQI: " << city.getAverage(dateFrom, dateTo) << endl;
+    
 }
 
 City Cities::getCity(string cityName) {

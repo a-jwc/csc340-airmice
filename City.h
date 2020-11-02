@@ -39,7 +39,9 @@ class City {
         map<string, int> dateAQI;
     
         //extra function for getAverage
-        void changeIntoString(const int&, const int&, string&);
+         void changeIntoString(const int&, const int&, string&);
+        void changeIntoInt(string, int&, int&, int&);
+        int dateToDays(string);
 };
 
 #endif
