@@ -357,3 +357,7 @@ bool City::hasDate(string date) {
         return false;
     }
 }
+
+int City::getAQI(const string& date){
+    return dateAQI.at(date);
+}//end AQI
