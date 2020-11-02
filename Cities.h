@@ -39,6 +39,8 @@ class Cities {
         void printCityAndAQIByDate(string);
 
         void getAvgFromRange(string, string, string);
+    
+        int getAqi(const string& name, const string& date);
     private:
         // holds list of cities
         vector<City> cityList;
