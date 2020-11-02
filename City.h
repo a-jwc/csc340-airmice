@@ -31,6 +31,8 @@ class City {
         double getAverage(string dateFrom, string dateTo);
 
         bool hasDate(string);
+    
+        int getAQI(const string& date);
         
     private:
         // city name
