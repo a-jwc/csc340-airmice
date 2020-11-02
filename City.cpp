@@ -208,9 +208,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 29; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -224,9 +225,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 31; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -240,9 +242,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 30; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -256,9 +259,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 31; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -273,9 +277,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 30; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -289,9 +294,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 31; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -305,9 +311,10 @@ double City::getAverage(string dateFrom, string dateTo) {
                     for (int i = dateFromInt; i <= 30; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
 
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
 
                         //getting out of while statement if reaches to date
                         if (monthFromInt == monthToInt && i == dateToInt) {
@@ -320,10 +327,12 @@ double City::getAverage(string dateFrom, string dateTo) {
                 case 9:
                     for (int i = dateFromInt; i <= 31; i++) {
                         changeIntoString(i, monthFromInt, tempDate);
-
-                        //adding to the total
-                        total = total + dateAQI.at(tempDate);
-                        counter++;
+                        
+                        if(hasDate(tempDate)) {
+                            total = total + dateAQI.at(tempDate);
+                            counter++;
+                        }
+                        
                             //getting out of while statement if reaches to date
                             if (monthFromInt == monthToInt && i == dateToInt) {
                                 goto correctDate;
