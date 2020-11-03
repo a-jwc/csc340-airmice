@@ -111,6 +111,7 @@ void Cities::searchCity(string cityName, City &city) {
     }
 }
 
+// Return AQI of a city with a specified date.
 int Cities::getAqi(const string& name, const string& date){
     int AQI;
     City foundCity;

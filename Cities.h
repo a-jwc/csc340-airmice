@@ -29,8 +29,6 @@ class Cities {
 
         void lookUpCityAndPrint(string);
 
-        int getDate() const;
-
         void printCityMapSize(City);
 
         // print city names prototype

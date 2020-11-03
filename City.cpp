@@ -38,11 +38,7 @@ void City::printInfo() {
         cout << "City: " << getName() << " Date: " << itr->first << " AQI: " << itr->second << endl;
 }
 
-void City::lookUpByName(string name) {
-    
-}
-
-void City::changeIntoString(const int& day, const int& month, string& tempDate){
+void City::changeIntoString(const int& day, const int& month, string& tempDate) {
     //switching from int back to string
     //replacing month
     string monthString = to_string(month);
@@ -58,8 +54,7 @@ void City::changeIntoString(const int& day, const int& month, string& tempDate){
     tempDate.insert(2, to_string(day));
 }//end changeIntoString
 
-void City::changeIntoInt(string date, int& month, int& day, int& year)
-{
+void City::changeIntoInt(string date, int& month, int& day, int& year) {
     //initializing tempMonth, tempDay and tempYear to get numbers after 9
     string tempMonth = "", tempDay = "", tempYear = "";
 
@@ -358,6 +353,6 @@ bool City::hasDate(string date) {
     }
 }
 
-int City::getAQI(const string& date){
+int City::getAQI(const string& date) {
     return dateAQI.at(date);
 }//end AQI
