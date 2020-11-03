@@ -16,7 +16,7 @@ int main() {
 
     cout << "/t/t/tWelcome to the Air Mice program" << endl;
     cout << endl;
-    cout << "Enter name of a city and our program will give you an AQI of that location." << endl;
+    // cout << "Enter name of a city and our program will give you an AQI of that location." << endl;
     cout << "Below is our list of city that our program currently provide for:" << endl;
 
     ct.printList();
@@ -41,15 +41,16 @@ int main() {
                 City city;
                 cout << "You have chosen option A." << endl;
                 while (!flag) {
-                    cout << "City: ";
+                    cout << "Please enter a city name: ";
                     cin >> cityUser;
                     city = ct.getCity(cityUser);
 
                     if (city.getName() == "")
                         cout << "Could not find city. Please try again." << endl;
-                    else
+                    else {
                         cout << "Got city: " << city.getName() << endl;
-                    flag = true;
+                        flag = true;
+                    }
                 } //End while statement
 
                 cout << "Please enter a specific date: ";
@@ -60,7 +61,7 @@ int main() {
                         check = true;
                     } else {
                         cout << "Invalid date entry. Please try again" << endl;
-                        cout << "Please enter the date that you want to start from: " << endl;
+                        cout << "Please enter another date: " << endl;
                         cin >> dateUser;
                     }
                 }//End dateCheck while statement
@@ -76,11 +77,11 @@ int main() {
                 string dateFrom, dateTo, cityName;
                 bool flagCon = false;
                 bool dateCheck = true;
-                cout << "City: ";
+                cout << "Please enter a city name: ";
                 cin >> cityName;
                 City city = ct.getCity(cityName);
 
-                while (flagCon) {
+                while (!flagCon) {
                     if (city.getName() == "") {
                         cout << "Could not find city. Please try again." << endl;
                         cout << "City: ";
@@ -108,16 +109,17 @@ int main() {
                     }
                 }//End dateCheck while statement
 
-                dateCheck = false; //Restart the condition to check the next DateTo data
+                dateCheck = true; //Restart the condition to check the next DateTo data
                 cout << "Please enter your desire end-date: ";
                 cin >> dateTo;
+                
                 while (dateCheck) {
                     if (city.hasDate(dateTo)) {
                         cout << "Valid date entry." << endl;
                         dateCheck = false;
                     } else {
                         cout << "Invalid date entry. Please try again" << endl;
-                        cout << "Please enter your desire end-date: ";
+                        cout << "Please enter your desired end-date: ";
                         cin >> dateTo;
                     }
                 }//End dateCheck while statement
@@ -133,7 +135,8 @@ int main() {
                 bool flagCheck;
                 string dateAQI;
 
-                cout << "You have chosen Option C. Please enter a date: ";
+                cout << "You have chosen Option C." << endl;
+                cout << "Please enter a date: ";
                 cin >> dateAQI;
 
                 // mainFlag = true;
