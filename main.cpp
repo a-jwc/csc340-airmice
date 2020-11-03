@@ -100,7 +100,7 @@ int main() {
                     //City dateCity;
                     if (city.hasDate(dateFrom)) {
                         cout << "Valid date entry." << endl;
-                        dateCheck = true;
+                        dateCheck = false;
                     } else {
                         cout << "Invalid date entry. Please try again" << endl;
                         cout << "Please enter the date that you want to start from: ";
@@ -114,7 +114,7 @@ int main() {
                 while (dateCheck) {
                     if (city.hasDate(dateTo)) {
                         cout << "Valid date entry." << endl;
-                        dateCheck = true;
+                        dateCheck = false;
                     } else {
                         cout << "Invalid date entry. Please try again" << endl;
                         cout << "Please enter your desire end-date: ";
