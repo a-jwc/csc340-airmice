@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// reads in data (city names, dates, AQI) into individual vectors 
 void Cities::fileRead() {
     // create instance of Document
     rapidcsv::Document doc("data/California_airquality.csv");
@@ -21,6 +22,7 @@ void Cities::fileRead() {
 
 }
 
+// moves the data from the vectors into the proper datatypes
 void Cities::addData() {
     City tempCity;
     int count = 2;
@@ -50,6 +52,7 @@ City Cities::setInitialCityName(string name) {
     return city;
 }
 
+// calls City function setCityDateAQI to set the date and AQI pair in the map container
 void Cities::setDateAQI(string &date, int &aqi, City &city) {
     city.setCityDateAQI(date,aqi);
 }
@@ -59,16 +62,19 @@ string Cities::getCityNameByIndex(int i) const {
     return cityList.at(i).getName();
 }
 
+// prints a list of the names of the cities in cityList
 void Cities::printList() {
     for(auto i : cityList) {
         cout << i.getName() << endl;
     }
 }
 
+// prints the size of the map container for a particular city
 void Cities::printCityMapSize(City city) {
     cout << city.getMapSize() << endl;
 }
 
+// looks up a city by name and prints the associated data
 void Cities::lookUpCityAndPrint(string name) {
     for(auto i : cityList) {
         if(i.getName() == name) {
@@ -79,6 +85,7 @@ void Cities::lookUpCityAndPrint(string name) {
     }
 }
 
+// prints the city name and AQI for a particular date
 void Cities::printCityAndAQIByDate(string date) {
     int count = 0;
     cout << "AQIs on " << date << ": " << endl;
@@ -91,18 +98,21 @@ void Cities::printCityAndAQIByDate(string date) {
     cout << "There were " << count << " cities with this date." << endl;
 }
 
+// calls the City function getAverage and prints the average AQI
 void Cities::getAvgFromRange(string dateFrom, string dateTo, string cityName) {
     City city = getCity(cityName);
     cout << "Average AQI: " << city.getAverage(dateFrom, dateTo) << endl;
     
 }
 
+// calls the searchCity function and returns a city by name
 City Cities::getCity(string cityName) {
     City city;
     searchCity(cityName, city);
     return city;
 }
 
+// iterates through the cityList to find a city by name
 void Cities::searchCity(string cityName, City &city) {
     for(auto i : cityList) {
         if(i.getName() == cityName) {

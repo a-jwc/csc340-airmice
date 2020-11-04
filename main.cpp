@@ -14,7 +14,7 @@ int main() {
     ct.fileRead();
     ct.addData();
 
-    cout << "/t/t/tWelcome to the Air Mice program" << endl;
+    cout << "Welcome to the Air Mice program" << endl;
     cout << endl;
     // cout << "Enter name of a city and our program will give you an AQI of that location." << endl;
     cout << "Below is our list of city that our program currently provide for:" << endl;

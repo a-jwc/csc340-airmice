@@ -17,11 +17,13 @@ void City::setName(string cityName) {
     name = cityName;
 }
 
+// calls the map insert function to add the date-AQI pair to our map container
 void City::setCityDateAQI(string &key, int &element) {
     dateAQI.insert({key, element});
     // cout << dateAQI.at(key) << endl;
 }
 
+// return map size
 int City::getMapSize() {
     return dateAQI.size();
 }
@@ -31,6 +33,7 @@ int City::getAQIFromDate(string date) const {
     return dateAQI.at(date);
 }
 
+// prints the info for a city
 void City::printInfo() {
     cout << "City: " << getName() << " " << getMapSize() << endl;
 
@@ -38,6 +41,7 @@ void City::printInfo() {
         cout << "City: " << getName() << " Date: " << itr->first << " AQI: " << itr->second << endl;
 }
 
+// change the date from an int to a string
 void City::changeIntoString(const int& day, const int& month, string& tempDate) {
     //switching from int back to string
     //replacing month
@@ -54,6 +58,7 @@ void City::changeIntoString(const int& day, const int& month, string& tempDate) 
     tempDate.insert(2, to_string(day));
 }//end changeIntoString
 
+// change the date from a string to an int
 void City::changeIntoInt(string date, int& month, int& day, int& year) {
     //initializing tempMonth, tempDay and tempYear to get numbers after 9
     string tempMonth = "", tempDay = "", tempYear = "";
@@ -88,6 +93,7 @@ void City::changeIntoInt(string date, int& month, int& day, int& year) {
     year = stoi(tempYear);
 }//end changeIntoInt
 
+// converts the date into number of days for bounds checking
 int City::dateToDays(string date){
     //day counter
     int days = 0, dayFromDate, monthFromDate, YearFromDate;
@@ -147,6 +153,7 @@ int City::dateToDays(string date){
     return days;
 }// end DatetoDays
 
+// gets the average AQI for a city given a particular date range
 double City::getAverage(string dateFrom, string dateTo) {
     //note: map organizes dates properly
     //checking whether the dates lie in between our ranges.
@@ -343,6 +350,7 @@ double City::getAverage(string dateFrom, string dateTo) {
     return ((double) total / (double) counter);
 }//end getAverage
 
+// returns true if a city has a particular date
 bool City::hasDate(string date) {
     auto it = dateAQI.find(date);
     if(it != dateAQI.end()) {
@@ -353,6 +361,7 @@ bool City::hasDate(string date) {
     }
 }
 
+// returns the AQI for a city on a particular date
 int City::getAQI(const string& date) {
     return dateAQI.at(date);
 }//end AQI
